@@ -26,58 +26,22 @@ password = ""
 #     password += random.choice(numbers)
 #
 # print(password)
-i = 1
-j = 1
-k = 1
-n= 1
-for n in range(1, nr_letters + nr_symbols + nr_numbers + 1):
-    random_selector = random.randint(0, 2)
-    if i > nr_letters:
-        random_selector_new0 = [1, 2]
-        random_selector = random.choice(random_selector_new0)
-        if j > nr_symbols:
-            random_selector = 2
-        if k > nr_numbers:
-            random_selector = 1
+password_list = []
 
-    if j > nr_symbols:
-        random_selector_new1 = [0, 2]
-        random_selector = random.choice(random_selector_new1)
-        if i > nr_letters:
-            random_selector = 2
-        if k > nr_numbers:
-            random_selector = 0
+for i in range(0, nr_letters):
+    password_list.append(random.choice(letters))
 
-    if k >nr_numbers:
-        random_selector_new2 = [0, 1]
-        random_selector = random.choice(random_selector_new2)
-        if i > nr_letters:
-            random_selector = 1
-        if j > nr_symbols:
-            random_selector = 0
+for i in range(0, nr_symbols):
+    password_list.append(random.choice(symbols))
 
+for i in range(0, nr_numbers):
+    password_list.append(random.choice(numbers))
 
-    if random_selector == 0 and i <= nr_letters:
-        for i in range(1, nr_letters + 1):
-            password += random.choice(letters)
-            i += 1
-            break
+# print(password_list)
+# random.shuffle(password_list)
+# print(password_list)
 
-    elif random_selector == 1 and j <= nr_symbols:
-        for j in range(1, nr_symbols + 1):
-            password += random.choice(symbols)
-            j += 1
-            break
-
-    elif random_selector == 2 and k <= nr_numbers:
-        for k in range(1, nr_numbers + 1):
-            password += random.choice(numbers)
-            k += 1
-            break
-
-    n += 1
+for i in range(0, len(password_list)):
+    password += password_list[i]
 
 print(password)
-print(i)
-print(j)
-print(k)
