@@ -39,6 +39,7 @@ while not game_over:
     for letter in chosen_word:
         if letter == guess:
             display += letter
+            # correct_letters.append(guess)
 
         elif letter in correct_letters:
             display += letter
@@ -51,11 +52,13 @@ while not game_over:
 
 
 
+
     print("Word to guess: " + display)
 
     # TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
     #  e.g. You guessed d, that's not in the word. You lose a life.
-
+    if guess in chosen_word:
+        correct_letters.append(guess)
     if guess not in chosen_word and guess not in wrong_letters:
         print(f"Your guess {guess} is not in the word. You lose a life.")
         lives -= 1
