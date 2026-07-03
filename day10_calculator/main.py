@@ -12,6 +12,8 @@ def multiply(n1, n2):
 def divide(n1, n2):
     return n1 / n2
 
+operators = ["+", "-", "*", "/"]
+
 operations = {
     "+": add,
     "-": subtract,
@@ -22,7 +24,8 @@ operations = {
 
 def calculator(num):
 
-    # print(operations)
+    for symbol in operations:
+        print(symbol)
     operator = input("Pick an operation: ")
     num2 = float(input("What's the next number? "))
     if operator == "+":
@@ -59,6 +62,7 @@ num1 = float(input("What's the first number? "))
 
 def wanna_play_again(num):
     output = calculator(num)
+    print(f"The result is: {output}")
     should_continue = input(f"Type 'y' to continue calculating with {output}, or type 'n' to start a new calculation: ").lower()
     if should_continue == "y":
 
