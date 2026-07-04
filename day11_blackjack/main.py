@@ -14,17 +14,18 @@ for i in range(0, 2):
 
 
 def sum_cards(card_deck):
-    sum = 0
-    for i in range(0, len(card_deck)):
-        sum += card_deck[i]
-    return sum
+    sum_deck = 0
+    for j in range(0, len(card_deck)):
+        sum_deck += card_deck[j]
+    # print(sum_deck)
+    return sum_deck
 
 
 # another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
 
 def card_adder(player_card):
         player_card.append(random.choice(cards))
-        print(f"Your cards: {player_card}, current score : {sum_cards(player_card)}")
+        print(f"Your cards: {player_card}, current score : {sum_cards(player_card)}") #might have to use print??
         print(f"Computer's first card: {computer_card[0]}")
 
 def computer_adder(computer_card):
@@ -38,18 +39,23 @@ def asker(player_card):
     another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
     if another_card == "y" and sum_cards(player_card) < 21:
         card_adder(player_card)
-        asker(player_card)
+        if sum_cards(player_card) >21:
+            print("Busted")
+            print("You lose")
+        else:
+            asker(player_card)
+
     elif sum_cards(player_card) >21:
         print("Busted")
         print("You lose")
 
     elif another_card == "n":
-        print(f"Your final hand: {player_card}, final score : {print(card_adder(player_card))}")
-        print(f"Computer's final hand: {computer_card}, final score : {print(card_adder(computer_card))}")
-        if sum_cards(player_card) > 21:
-            print("Busted")
-            print("You lose")
-        elif sum_cards(player_card) < sum_cards(computer_card):
+        print(f"Your final hand: {player_card}, final score : {sum_cards(player_card)}")
+        print(f"Computer's final hand: {computer_card}, final score : {sum_cards(computer_card)}")
+        # if sum_cards(player_card) > 21:
+        #     print("Busted")
+        #     print("You lose")
+        if sum_cards(player_card) < sum_cards(computer_card):
             print("You lose")
         elif sum_cards(player_card) == sum_cards(computer_card):
             print("Draw")
@@ -67,4 +73,3 @@ asker(player_card)
 #     player_card.append(cards)
 #     print(f"Your cards: {player_card}, current score : {sum_cards(player_card)}")
 #     print(f"Computer's first card: {computer_card[0]}")
-
