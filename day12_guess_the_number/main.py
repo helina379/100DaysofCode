@@ -38,8 +38,13 @@ def ask_for_guess():
         print("Too high!")
         attempts -= 1
         print(f"You have {attempts} remaining to guess the number.")
-        ask_for_guess()
+        if attempts == 0:
+            print("You are out of guesses")
+            print(f"The answer was {number_to_be_guessed}")
+        else:
+            ask_for_guess()
     elif attempts == 0:
         print("You are out of guesses")
+        print(f"The answer was {number_to_be_guessed}")
 
 ask_for_guess()
