@@ -54,7 +54,7 @@ amount_given = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
 
 def coffee_machine(coffee_type, amount):
     for coffee in MENU[coffee_type]:
-        if coffee == coffee_type:
+        # if coffee == coffee_type:
             if amount >= MENU[coffee_type]["cost"]:
                 change = amount - MENU[coffee_type]["cost"]
                 if MENU[coffee_type]["ingredients"]["water"] >= resources["water"]:
