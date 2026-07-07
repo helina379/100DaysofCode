@@ -57,11 +57,11 @@ def coffee_machine(coffee_type, amount):
         # if coffee == coffee_type:
             if amount >= MENU[coffee_type]["cost"]:
                 change = amount - MENU[coffee_type]["cost"]
-                if MENU[coffee_type]["ingredients"]["water"] >= resources["water"]:
+                if MENU[coffee_type]["ingredients"]["water"] <= resources["water"]:
                     resources["water"] -= MENU[coffee_type]["ingredients"]["water"]
-                    if MENU[coffee_type]["ingredients"]["milk"] >= resources["milk"]:
+                    if MENU[coffee_type]["ingredients"]["milk"] <= resources["milk"]:
                         resources["milk"] -= MENU[coffee_type]["ingredients"]["milk"]
-                        if MENU[coffee_type]["ingredients"]["coffee"] >= resources["coffee"]:
+                        if MENU[coffee_type]["ingredients"]["coffee"] <= resources["coffee"]:
                             resources["coffee"] -= MENU[coffee_type]["ingredients"]["coffee"]
                             print(f"Here is your latte: ☕")
                             if change > 0:
