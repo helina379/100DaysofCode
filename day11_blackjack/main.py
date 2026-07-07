@@ -12,7 +12,6 @@ for i in range(0, 2):
 
 # computer_card.append(random.choice(cards))
 
-
 def sum_cards(card_deck):
     sum_deck = 0
     for j in range(0, len(card_deck)):
@@ -34,20 +33,28 @@ def computer_adder(computer_card):
         computer_adder(computer_card)
     return computer_card
 
+def ace_adjuster(card_deck):
+    for k in range(0, len(card_deck)):
+        if sum_cards(card_deck) > 21 and card_deck[k] == 11:
+            card_deck[k] = 1
+    return sum(card_deck)
+
 
 def asker(player_card):
     another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
-    if another_card == "y" and sum_cards(player_card) < 21:
+    if another_card == "y" and ace_adjuster(player_card) < 21:
         card_adder(player_card)
-        if sum_cards(player_card) >21:
+        if ace_adjuster(player_card) >21:
             print("Busted")
             print("You lose")
         else:
             asker(player_card)
 
-    elif sum_cards(player_card) >21:
+    elif ace_adjuster(player_card) >21:
         print("Busted")
         print("You lose")
+
+
 
     elif another_card == "n":
         print(f"Your final hand: {player_card}, final score : {sum_cards(player_card)}")
@@ -55,11 +62,11 @@ def asker(player_card):
         # if sum_cards(player_card) > 21:
         #     print("Busted")
         #     print("You lose")
-        if sum_cards(player_card) < sum_cards(computer_card):
+        if ace_adjuster(player_card) < ace_adjuster(computer_card):
             print("You lose")
-        elif sum_cards(player_card) == sum_cards(computer_card):
+        elif ace_adjuster(player_card) == ace_adjuster(computer_card):
             print("Draw")
-        elif sum_cards(player_card) > sum_cards(computer_card):
+        elif ace_adjuster(player_card) > ace_adjuster(computer_card):
             print("You win")
 
 
