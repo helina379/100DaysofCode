@@ -34,14 +34,17 @@ resources = {
 # TODO: 1. Print report of all coffee machine resources.
 
 coffee_choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
-print("Please insert coins.")
-quarters = int(input("How many quarters?: "))
-dimes = int(input("How many dimes?: "))
-nickles = int(input("How many nickles?: "))
-pennies = int(input("How many pennies?: "))
+if coffee_choice != "report":  # do nothing
 
-amount_given = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
+    print("Please insert coins.")
+    quarters = int(input("How many quarters?: "))
+    dimes = int(input("How many dimes?: "))
+    nickles = int(input("How many nickles?: "))
+    pennies = int(input("How many pennies?: "))
 
+    amount_given = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
+else:
+    amount_given = 0
 # print(MENU[coffee_choice]["ingredients"]["water"])
 # print("☕")
 
@@ -55,7 +58,9 @@ amount_given = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
 def coffee_machine(coffee_type, amount):
     # for coffee in MENU[coffee_type]:
         # if coffee == coffee_type:
-            if amount >= MENU[coffee_type]["cost"]:
+            if coffee_type == "report":
+                print(resources)
+            elif amount >= MENU[coffee_type]["cost"]:
                 change = amount - MENU[coffee_type]["cost"]
                 if MENU[coffee_type]["ingredients"]["water"] <= resources["water"]:
                     resources["water"] -= MENU[coffee_type]["ingredients"]["water"]
@@ -78,4 +83,6 @@ def coffee_machine(coffee_type, amount):
 
 
 coffee_machine(coffee_choice, amount_given)
+
+
 
