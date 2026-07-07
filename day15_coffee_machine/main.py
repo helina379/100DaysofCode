@@ -2,6 +2,7 @@ MENU = {
     "espresso": {
         "ingredients": {
             "water": 50,
+            "milk": 0,
             "coffee": 18,
         },
         "cost": 1.5,
@@ -48,9 +49,8 @@ amount_given = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
 #     change = amount_given - MENU[coffee_choice]["cost"]
 #     print(f"Here is your change: ${change}")
 
-# for coffee in MENU["coffee_choice"]:
-#     if coffee == coffee_choice:
-#         print(MENU["coffee_choice"])
+# for coffee in MENU[coffee_choice]:
+#     print(coffee)
 
 def coffee_machine(coffee_type, amount):
     for coffee in MENU[coffee_type]:
@@ -63,7 +63,7 @@ def coffee_machine(coffee_type, amount):
                         resources["milk"] -= MENU[coffee_type]["ingredients"]["milk"]
                         if MENU[coffee_type]["ingredients"]["coffee"] <= resources["coffee"]:
                             resources["coffee"] -= MENU[coffee_type]["ingredients"]["coffee"]
-                            print(f"Here is your latte: ☕")
+                            print(f"Here is your {coffee_type}: ☕")
                             if change > 0:
                                 print(f"Here is your change: {change}")
                         else:
@@ -78,5 +78,4 @@ def coffee_machine(coffee_type, amount):
 
 
 coffee_machine(coffee_choice, amount_given)
-
 
