@@ -33,7 +33,6 @@ while want_coffee == "y":
 
         if cofee_machine.is_resource_sufficient(drink) and money.make_payment(cost):
             cofee_machine.make_coffee(drink)
-        else:
-            print("Money refunded")           
+             
 
         want_coffee = input("Do you want more coffee? (y/n) ").lower()
